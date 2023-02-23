@@ -10,6 +10,11 @@
     <packaging>pom</packaging>
 
     <name>Spring Cloud 示例</name>
+    <modules>
+        <module>spring-cloud-camden-samples</module>
+        <module>spring-cloud-camden-samples/microservice-provider-user</module>
+        <module>spring-cloud-camden-samples/microservice-simple-consumer-movie</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -82,7 +87,7 @@
         <repository>
             <id>spirng-milestones</id>
             <name>Spring Milestones</name>
-            <url>http://repo.spring.io/milestone</url>
+            <url>https://repo.spring.io/milestone</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -93,7 +98,7 @@
         <pluginRepository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
-            <url>http://repo.spring.io/milestone</url>
+            <url>https://repo.spring.io/milestone</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
