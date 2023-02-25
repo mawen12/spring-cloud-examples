@@ -12,9 +12,6 @@
     <name>Spring Cloud 示例</name>
     <modules>
         <module>spring-cloud-camden-samples</module>
-        <module>spring-cloud-camden-samples/microservice-provider-user</module>
-        <module>spring-cloud-camden-samples/microservice-simple-consumer-movie</module>
-        <module>spring-cloud-camden-samples/microservice-discovery-eureka</module>
     </modules>
 
     <properties>

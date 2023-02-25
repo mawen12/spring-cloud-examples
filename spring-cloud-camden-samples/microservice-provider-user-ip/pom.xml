@@ -10,8 +10,8 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>microservice-provider-user</artifactId>
-    <description>用户微服务</description>
+    <artifactId>microservice-provider-user-ip</artifactId>
+    <description>用户微服务-IP选择</description>
 
     <dependencies>
         <dependency>

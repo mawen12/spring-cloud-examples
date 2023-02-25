@@ -1,0 +1,10 @@
+server:
+  port: 8761
+eureka:
+  client:
+    registerWithEureka: false                     # 不将自己注册到 Eureka Server(本身就是Eureka Server)
+    fetchRegistry: false                          # 不从其他节点同步注册信息(单节点)
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/  # Eureka Server 交互地址
+    healthcheck:
+      enabled: true                               # 启用 Eureka Server 的健康检查

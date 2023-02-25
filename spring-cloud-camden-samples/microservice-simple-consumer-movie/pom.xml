@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>microservice-simple-consumer-movie</artifactId>
-    <description>电影微服务</description>
+    <description>电影微服务-简单</description>
 
     <build>
         <plugins>

@@ -10,9 +10,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient // 声明为 Eureka Client
 @SpringBootApplication
-public class ProviderUserApplication {
+public class ProviderUserIpApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProviderUserApplication.class, args);
+        SpringApplication.run(ProviderUserIpApplication.class, args);
     }
 }

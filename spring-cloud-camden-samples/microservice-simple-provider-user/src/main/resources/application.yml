@@ -1,8 +1,6 @@
 server:
   port: 8000
 spring:
-  application:
-    name: microservice-provider-user    # 指定注册到 Eureka Server 上的应用名称，会被自动转换为大写
   jpa:
     generate-ddl: false
     show-sql: true
@@ -26,11 +24,3 @@ info:                                           # 自定义info断点信息
     java:
       source: @java.version@
       target: @java.version@
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://mawen:123456@localhost:8761/eureka/ # 注册到需要用户认证的 Eureka Server
-#      defaultZone: http://localhost:8761/eureka/
-  instance:
-    prefer-ip-address: true             # 将自己的 IP 注册到 Eureka Server

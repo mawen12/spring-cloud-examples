@@ -10,7 +10,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>microservice-provider-user</artifactId>
+    <artifactId>microservice-provider-user-my-metadata</artifactId>
     <description>用户微服务</description>
 
     <dependencies>

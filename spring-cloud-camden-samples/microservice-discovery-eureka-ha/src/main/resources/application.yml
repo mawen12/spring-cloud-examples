@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: microservice-discovery-erueka-ha
+
+---
+spring:
+  profiles: peer1                             # 指定 profile=peer1
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: peer1                           # 当profile=peer1时，主机名是peer1，此处需要设置 /etc/hosts，将其指向 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8762/eureka/  # 将自己注册到peer2这个Eureka上去
+
+---
+spring:
+  profiles: peer2                             # 指定 profile=peer2
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: peer2                           # 当profile=peer2时，主机名是peer2，此处需要设置 /etc/hosts，将其指向 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/  # 将自己注册到peer1这个Eureka上去
