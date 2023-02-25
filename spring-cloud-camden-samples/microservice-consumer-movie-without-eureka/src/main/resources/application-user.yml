@@ -1,0 +1,3 @@
+microservice-provider-user:
+  ribbon:
+    listOfServers: localhost:8000,localhost:8001    # 设置 Ribbon 客户端请求的地址列表
