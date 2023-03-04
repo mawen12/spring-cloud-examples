@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: microservice-foo        # 对应config server所获取的配置文件的{application}
+  cloud:
+    config:
+      uri: http://localhost:8080  # 指定Config Server的地址，默认是http://localhost:8888
+      profile: dev                # profile对应的config server所获取的配置文件的{profile}
+      label: master               # 指定Git仓库的分支，对应config server所获取的配置文件的{label}
+    bus:
+      trace:
+        enabled: true             # 开启总线事件跟踪
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
