@@ -12,6 +12,8 @@
     <name>Spring Cloud 示例</name>
     <modules>
         <module>spring-cloud-camden-samples</module>
+        <module>spring-cloud-camden-samples/microservice-gateway-zuul</module>
+        <module>spring-cloud-camden-samples/microservice-file-upload</module>
     </modules>
 
     <properties>
