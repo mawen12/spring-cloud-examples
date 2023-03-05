@@ -12,7 +12,6 @@
     <name>Spring Cloud 示例</name>
     <modules>
         <module>spring-cloud-camden-samples</module>
-        <module>spring-cloud-camden-samples/microservice-config-client</module>
     </modules>
 
     <properties>

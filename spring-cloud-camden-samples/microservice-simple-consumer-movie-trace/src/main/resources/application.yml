@@ -1,0 +1,10 @@
+server:
+  port: 8010
+spring:
+  profiles:
+    active: user
+logging:
+  level:
+    root: INFO
+    org.springframework.web.servlet.DispatcherServlet: DEBUG    # 请求跟踪
+    org.springframework.cloud.sleuth: TRACE                     # 服务跟踪

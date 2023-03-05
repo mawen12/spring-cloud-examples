@@ -10,13 +10,13 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>microservice-provider-user</artifactId>
-    <description>用户微服务</description>
+    <artifactId>microservice-simple-provider-user-trace</artifactId>
+    <description>用户微服务-简单-服务跟踪</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
 
         <dependency>
@@ -36,19 +36,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
-                <configuration>
-                    <mainClass>com.mawen.user.ProviderUserTraceApplication</mainClass>
-                </configuration>
-
-                <!-- 添加 repackage，确保达成的jar中能够包含main manifest attribute -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

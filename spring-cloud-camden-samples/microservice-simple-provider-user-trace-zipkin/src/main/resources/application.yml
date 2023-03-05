@@ -1,0 +1,35 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: microservice-simple-provider-user-trace-zipkin
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:                     # 指定数据源
+    platform: h2                  # 指定数据源类型
+    schema: classpath:schema.sql  # 指定h2数据库的建表脚本
+    data: classpath:data.sql      # 指定h2数据库的数据脚本
+  zipkin:                             # 指定 Zipkin 的地址
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      percentage: 1.0                 # 指定需要采样的请求的百分比
+logging:                          # 配置日志级别，让hibernate打印执行的SQL
+  level:
+    root: INFO
+#    org.hibernate: INFO
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+#    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    org.springframework.web.servlet.DispatcherServlet: DEBUG  # 请求跟踪
+    org.springframework.cloud.sleuth: DEBUG                   # 服务跟踪
+
+info:                                           # 自定义info断点信息
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@

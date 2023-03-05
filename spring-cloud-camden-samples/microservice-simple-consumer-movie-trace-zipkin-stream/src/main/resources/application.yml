@@ -1,0 +1,20 @@
+server:
+  port: 8010
+spring:
+  profiles:
+    active: user
+  application:
+    name: microservice-simple-movie-trace-zipkin-stream
+  sleuth:
+    sampler:
+      percentage: 1.0                                           # 指定需要采样的请求的百分比
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+logging:
+  level:
+    root: INFO
+    org.springframework.web.servlet.DispatcherServlet: DEBUG    # 请求跟踪
+    org.springframework.cloud.sleuth: TRACE                     # 服务跟踪
