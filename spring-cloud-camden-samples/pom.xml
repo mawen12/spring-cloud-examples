@@ -76,6 +76,11 @@
         <module>microservice-trace-zipkin-server-stream</module>
         <module>microservice-simple-provider-user-trace-zipkin-stream</module>
         <module>microservice-simple-consumer-movie-trace-zipkin-stream</module>
+
+        <module>microservice-discovery-eureka-dockerfile</module>
+        <module>microservice-discovery-eureka-docker-maven-plugin</module>
+        <module>microservice-discovery-eureka-dockerfile-docker-maven-plugin</module>
+        <module>microservice-discovery-eureka-docker-compose</module>
     </modules>
 
     <properties>
@@ -157,6 +162,13 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
+                </plugin>
+
+                <!-- Spotify Docker 插件 -->
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.4.13</version>
                 </plugin>
             </plugins>
         </pluginManagement>

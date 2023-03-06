@@ -1,0 +1,26 @@
+version: '2'  # 表示该 docker-compose.yml 文件使用的是 Version 2 file format
+services:
+  microservice-discovery-eureka:                                            # 指定服务名称
+    image: mawen/microservice-discovery-eureka:1.0-SNAPSHOT
+    ports:                                                                  # 暴露端口信息
+      - "8761:8761"
+  microservice-provider-user:
+    image: mawen/microservice-provider-user:1.0-SNAPSHOT
+    links:                                                                  # 连接到 microservice-discovery-eureka:discovery，使用 SERVICE:ALIAS 形式
+      - microservice-discovery-eureka:discovery
+  microservice-consumer-movie-ribbon-hystrix:
+    image: mawen/microservice-consumer-movie-ribbon-hystrix:1.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery
+  microservice-gateway-zuul:
+    image: mawen/microservice-gateway-zuul:1.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery
+  microservice-hystrix-dashboard:
+    image: mawen/microservice-hystrix-dashboard:1.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery
+  microservice-hystrix-trubine:
+    image: mawen/microservice-hystrix-turbine:1.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka:discovery

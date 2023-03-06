@@ -30,7 +30,8 @@ info:                                           # 自定义info断点信息
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://mawen:123456@localhost:8761/eureka/ # 注册到需要用户认证的 Eureka Server
+#      defaultZone: http://mawen:123456@localhost:8761/eureka/ # 注册到需要用户认证的 Eureka Server
 #      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://discovery:8761/eureka/
   instance:
     prefer-ip-address: true             # 将自己的 IP 注册到 Eureka Server

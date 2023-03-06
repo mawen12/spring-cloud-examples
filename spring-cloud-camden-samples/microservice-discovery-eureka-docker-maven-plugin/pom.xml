@@ -10,8 +10,8 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>microservice-discovery-eureka-ha</artifactId>
-    <description>微服务发现组件-Eureka 高可用</description>
+    <artifactId>microservice-discovery-eureka-docker-maven-plugin</artifactId>
+    <description>微服务发现组件-Eureka Spotify Docker Maven 插件</description>
 
     <dependencies>
         <dependency>
@@ -26,12 +26,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.mawen.discovery.eureka.EurekaHaApplication</mainClass>
+                    <mainClass>com.mawen.discovery.eureka.EurekaApplication</mainClass>
                 </configuration>
 
-                <!-- 添加 repackage，确保达成的jar中能够包含main manifest attribute -->
                 <executions>
                     <execution>
                         <goals>
@@ -45,10 +43,23 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
+                <!-- 将插件绑定在package这个phase上，当执行 mvn package 时就自动执行 maven docker:build -->
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <!-- 镜像名称 仓库名称/镜像名称/标签名称-->
-                    <imageName>mawen/${project.artifactId}:${project.version}</imageName>
-                    <forceTags>true</forceTags>
+                    <imageName>mawen/${project.artifactId}</imageName>
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
                     <!-- 基础镜像 类似 Dockerfile 中的 FROM 命令 -->
                     <baseImage>openjdk:8u342-jdk</baseImage>
                     <!-- 类似与 Dockerfile 中的 ENTRYPOINT 命令 -->

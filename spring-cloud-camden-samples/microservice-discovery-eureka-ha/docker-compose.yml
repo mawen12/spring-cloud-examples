@@ -1,0 +1,20 @@
+version: '2'
+services:
+  microservice-discovery-eureka-ha1:
+    hostname: localhost
+    image: mawen/microservice-discovery-eureka-ha:1.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka-ha2
+    ports:
+      - "8761:8761"
+    environment:
+      - spring.profiles.active=peer1
+  microservice-discovery-eureka-ha2:
+    hostname: localhost
+    image: mawen/microservice-discovery-eureka-ha:1.0-SNAPSHOT
+    links:
+      - microservice-discovery-eureka-ha1
+    ports:
+      - "8762:8762"
+    environment:
+      - spring.profiles.active=peer2
