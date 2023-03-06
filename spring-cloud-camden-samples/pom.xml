@@ -66,6 +66,7 @@
         <module>microservice-config-server-eureka</module>
         <module>microservice-config-client-eureka</module>
         <module>microservice-config-server-authenticating</module>
+        <module>microservice-config-client-authenticating</module>
 
         <module>microservice-simple-provider-user-trace</module>
         <module>microservice-simple-consumer-movie-trace</module>
@@ -148,6 +149,17 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+
+        <pluginManagement>
+            <plugins>
+                <!-- Spring Boot Maven 插件版本管理 -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
 </project>

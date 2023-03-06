@@ -38,7 +38,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.mawen.user.ProviderUserAuthApplication</mainClass>
+                    <mainClass>com.mawen.user.ProviderUserMultipleParamsApplication</mainClass>
                 </configuration>
 
                 <!-- 添加 repackage，确保达成的jar中能够包含main manifest attribute -->
