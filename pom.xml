@@ -12,6 +12,8 @@
     <name>Spring Cloud 示例</name>
     <modules>
         <module>spring-cloud-camden-samples</module>
+        <module>spring-cloud-hoxton-samples</module>
+        <module>spring-cloud-kilburn-samples</module>
     </modules>
 
     <properties>
@@ -39,43 +41,47 @@
     </developers>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>${maven-clean.version}</version>
-            </plugin>
+        <pluginManagement>
+            <plugins>
+                <!-- Maven 插件版本管理 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean.version}</version>
+                </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler.version}</version>
-            </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler.version}</version>
+                </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>${maven-deploy.version}</version>
-            </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy.version}</version>
+                </plugin>
 
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>${maven-install.version}</version>
-            </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install.version}</version>
+                </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war.version}</version>
-            </plugin>
-        </plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${maven-war.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <repositories>
+        <!-- Spring 仓库 -->
         <repository>
-            <id>spirng-milestones</id>
+            <id>spring-milestones</id>
             <name>Spring Milestones</name>
             <url>https://repo.spring.io/milestone</url>
             <snapshots>
@@ -85,6 +91,7 @@
     </repositories>
 
     <pluginRepositories>
+        <!-- Spring 插件仓库 -->
         <pluginRepository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -94,6 +101,7 @@
             </snapshots>
         </pluginRepository>
 
+        <!-- Maven 插件仓库 -->
         <pluginRepository>
             <id>central</id>
             <name>Maven Central</name>
