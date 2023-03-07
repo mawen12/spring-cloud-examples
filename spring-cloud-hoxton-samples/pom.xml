@@ -16,7 +16,6 @@
     <modules>
         <module>hoxton.microservice-discovery-eureka</module>
         <module>hoxton.microservice-provider-user</module>
-
     </modules>
 
     <properties>

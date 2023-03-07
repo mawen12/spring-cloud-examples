@@ -5,17 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.mawen</groupId>
-        <artifactId>spring-cloud-hoxton-samples</artifactId>
+        <artifactId>spring-cloud-kilburn-samples</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>hoxton.microservice-provider-user</artifactId>
+    <artifactId>kilburn.microservice-discovery-eureka</artifactId>
+    <name>${project.artifactId}</name>
+    <description>Spring Cloud Eureka</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
     </dependencies>
+
 </project>

@@ -11,6 +11,10 @@
 
     <artifactId>spring-cloud-kilburn-samples</artifactId>
     <name>Spring Cloud Kilburn 示例工程</name>
+    <modules>
+        <module>kilburn.microservice-discovery-eureka</module>
+        <module>kilburn.microservice-provider-user</module>
+    </modules>
     <packaging>pom</packaging>
 
     <properties>
@@ -21,6 +25,18 @@
         <spring-boot.version>3.0.4</spring-boot.version>
         <spring-cloud.version>2022.0.1</spring-cloud.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
