@@ -25,6 +25,7 @@
         <maven-deploy.version>3.0.0</maven-deploy.version>
         <maven-install.version>3.1.0</maven-install.version>
         <maven-war.version>3.3.2</maven-war.version>
+        <maven-resources.version>3.3.0</maven-resources.version>
     </properties>
 
     <scm>
@@ -73,6 +74,19 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${maven-war.version}</version>
+                </plugin>
+
+                <!-- 解决YAML文件中使用@@读取maven变量报错的问题 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources.version}</version>
+                    <configuration>
+                        <delimiters>
+                            <delimiter>@</delimiter>
+                        </delimiters>
+                        <useDefaultDelimiters>false</useDefaultDelimiters>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

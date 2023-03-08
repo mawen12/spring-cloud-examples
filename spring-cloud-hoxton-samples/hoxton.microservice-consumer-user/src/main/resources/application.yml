@@ -1,0 +1,20 @@
+server:
+  port: @server.port@
+spring:
+  application:
+    name: consumer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+---
+spring:
+  profiles:
+    active: docker
+eureka:
+  client:
+    service-url:
+      defaultZone: http://@docker.service.discovery.name@:8761/eureka/
+
+

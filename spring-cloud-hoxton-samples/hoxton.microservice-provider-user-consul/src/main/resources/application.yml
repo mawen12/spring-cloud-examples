@@ -2,7 +2,7 @@ server:
   port: @server.port@
 spring:
   application:
-    name: provider
+    name: provider-consul
   jpa:
     generate-ddl: false
     show-sql: true
@@ -12,24 +12,22 @@ spring:
     platform: h2                  # 指定数据源类型
     schema: classpath:schema.sql  # 指定h2数据库的建表脚本
     data: classpath:data.sql      # 指定h2数据库的数据脚本
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
 logging: # 配置日志级别，让hibernate打印执行的SQL
   level:
     root: INFO
     org.hibernate: INFO
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
 
 ---
 spring:
   profiles:
     active: docker
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://@docker.service.discovery.name@:8761/eureka/
-  instance:
-    prefer-ip-address: true
+  cloud:
+    consul:
+      host: @docker.service.discovery.name@
+      port: 8500

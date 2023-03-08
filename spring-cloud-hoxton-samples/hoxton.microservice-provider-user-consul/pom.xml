@@ -7,34 +7,42 @@
         <groupId>com.mawen</groupId>
         <artifactId>spring-cloud-hoxton-samples</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>hoxton.microservice-discovery-eureka</artifactId>
-    <name>${project.artifactId}</name>
-    <description>Microservice Discovery Eureka</description>
-    <packaging>jar</packaging>
+    <artifactId>hoxton.microservice-provider-user-consul</artifactId>
 
     <properties>
-        <server.port>8761</server.port>
+        <server.port>8000</server.port>
+        <docker.service.discovery.name>consul</docker.service.discovery.name>
     </properties>
 
     <dependencies>
-        <!-- Eureka Server 依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>hoxton.discovery-eureka</finalName>
+        <finalName>hoxton.provider-user-consul</finalName>
 
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.mawen.EurekaApplication</mainClass>
+                    <mainClass>com.mawen.UserApplication</mainClass>
                 </configuration>
             </plugin>
 
@@ -49,5 +57,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

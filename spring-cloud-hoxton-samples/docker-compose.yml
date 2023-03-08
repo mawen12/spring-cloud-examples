@@ -1,0 +1,28 @@
+version: "2.1"
+
+services:
+  eureka:
+    image: mawen/hoxton.discovery-eureka:1.0-SNAPSHOT
+    ports:
+      - "8761:8761"
+    mem_limit: 1g
+    mem_reservation: 1g
+  provider:
+    image: mawen/hoxton.provider-user:1.0-SNAPSHOT
+    ports:
+      - "8000:8000"
+      - "5005:5005"
+    depends_on:
+      - eureka
+    mem_limit: 1g
+    mem_reservation: 1g
+  consumer:
+    image: mawen/hoxton.consumer-user:1.0-SNAPSHOT
+    ports:
+      - "8010:8010"
+      - "15005:5005"
+    depends_on:
+      - eureka
+      - provider
+    mem_limit: 1g
+    mem_reservation: 1g

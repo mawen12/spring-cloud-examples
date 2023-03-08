@@ -16,6 +16,10 @@
     <modules>
         <module>hoxton.microservice-discovery-eureka</module>
         <module>hoxton.microservice-provider-user</module>
+        <module>hoxton.microservice-consumer-user</module>
+
+        <module>hoxton.microservice-provider-user-consul</module>
+        <module>hoxton.microservice-consumer-user-consul</module>
     </modules>
 
     <properties>
@@ -25,6 +29,8 @@
 
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+
+        <server.port>0</server.port>
     </properties>
 
     <dependencies>
@@ -42,6 +48,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -73,15 +85,67 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
+
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
 
-                <!-- Spotify Docker 插件 -->
+                <!-- Spotify Docker 插件版本管理 -->
                 <plugin>
                     <groupId>com.spotify</groupId>
                     <artifactId>docker-maven-plugin</artifactId>
                     <version>1.2.2</version>
+                    <!-- 将插件绑定在package这个phase上，当执行 mvn package 时就自动执行 maven docker:build -->
+                    <executions>
+                        <execution>
+                            <id>build-image</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <!-- 通用配置 -->
+                    <configuration>
+                        <!-- 镜像名称 仓库名称/镜像名称/标签名称-->
+                        <imageName>mawen/${project.build.finalName}:${project.version}</imageName>
+                        <!-- 强制覆盖 -->
+                        <forceTags>true</forceTags>
+                        <!-- 基础镜像 类似 Dockerfile 中的 FROM 命令 -->
+                        <baseImage>openjdk:8u212-jre-alpine</baseImage>
+                        <!-- 类似与 Dockerfile 中的 ENTRYPOINT 命令 -->
+                        <!-- "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005" remote debug 支持-->
+                        <!-- "-Djava.security.egd=file:/dev/./urandom" 提升随机数性能-->
+                        <!-- "-Dspring.profiles.active=default,docker" 使用default,docker -->
+                        <entryPoint>["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005", "-Djava.security.egd=file:/dev/./urandom", "-Dspring.profiles.active=docker", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                        <exposes>
+                            <expose>${server.port}</expose>
+                        </exposes>
+                        <resources>
+                            <resource>
+                                <targetPath>/</targetPath>
+                                <!-- 指定需要复制的根目录 -->
+                                <directory>${project.build.directory}</directory>
+                                <!-- 指定需要复制的文件 -->
+                                <include>${project.build.finalName}.jar</include>
+                            </resource>
+                        </resources>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <resources>
+            <!-- 解决YAML文件中使用@@读取maven变量报错的问题 -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
 </project>

@@ -1,0 +1,20 @@
+server:
+  port: @server.port@
+spring:
+  application:
+    name: consumer-consul
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+---
+spring:
+  profiles:
+    active: docker
+  cloud:
+    consul:
+      host: @docker.service.discovery.name@
+      port: 8500
+
+
