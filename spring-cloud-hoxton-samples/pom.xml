@@ -26,6 +26,8 @@
 
         <module>hoxton.microservice-gateway</module>
         <module>hoxton.microservice-gateway-zuul</module>
+        <module>hoxton.microservice-consumer-user-ribbon</module>
+
     </modules>
 
     <properties>
@@ -152,6 +154,28 @@
                                 <include>${project.build.finalName}.jar</include>
                             </resource>
                         </resources>
+                    </configuration>
+                </plugin>
+
+                <!-- Spotify Docker 新版插件，用于生成docker镜像 -->
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>1.4.13</version>
+                    <executions>
+                        <execution>
+                            <id>default</id>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <tag>${project.version}</tag>
+                        <buildArgs>
+                            <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
                     </configuration>
                 </plugin>
             </plugins>
