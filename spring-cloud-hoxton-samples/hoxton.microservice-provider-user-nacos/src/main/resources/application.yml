@@ -13,9 +13,9 @@ spring:
     schema: classpath:schema.sql  # 指定h2数据库的建表脚本
     data: classpath:data.sql      # 指定h2数据库的数据脚本
   cloud:
-    consul:
-      host: localhost
-      port: 8500
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 logging: # 配置日志级别，让hibernate打印执行的SQL
   level:
     root: INFO
@@ -28,6 +28,7 @@ spring:
   profiles:
     active: docker
   cloud:
-    consul:
-      host: @docker.service.discovery.name@
-      port: 8500
+    nacos:
+      discovery:
+        server-addr: @docker.service.discovery.name@:8848
+

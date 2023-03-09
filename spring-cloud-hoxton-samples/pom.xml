@@ -20,6 +20,9 @@
 
         <module>hoxton.microservice-provider-user-consul</module>
         <module>hoxton.microservice-consumer-user-consul</module>
+
+        <module>hoxton.microservice-provider-user-nacos</module>
+        <module>hoxton.microservice-consumer-user-nacos</module>
     </modules>
 
     <properties>
@@ -29,6 +32,7 @@
 
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.9.RELEASE</spring-cloud-alibaba.version>
 
         <server.port>0</server.port>
     </properties>
@@ -71,6 +75,14 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

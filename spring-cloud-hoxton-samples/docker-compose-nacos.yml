@@ -6,5 +6,27 @@ services:
     ports:
       - "8848:8848"
       - "9555:9555"
-    restart: always
+    environment:
+      MODE: standalone
+      PREFER_HOST_MODE: hostname
+    mem_limit: 1g
+    mem_reservation: 1g
+  provider-nacos:
+    image: mawen/hoxton.provider-user-nacos:1.0-SNAPSHOT
+    ports:
+      - "8000:8000"
+      - "5005:5005"
+    depends_on:
+      - nacos
+    mem_limit: 1g
+    mem_reservation: 1g
+  consumer-nacos:
+    image: mawen/hoxton.consumer-user-nacos:1.0-SNAPSHOT
+    ports:
+      - "8010:8010"
+      - "15005:5005"
+    depends_on:
+      - nacos
+    mem_limit: 1g
+    mem_reservation: 1g
 

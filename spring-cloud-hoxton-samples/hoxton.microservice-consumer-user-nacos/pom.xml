@@ -7,13 +7,13 @@
         <groupId>com.mawen</groupId>
         <artifactId>spring-cloud-hoxton-samples</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>hoxton.microservice-provider-user-nacos</artifactId>
+    <artifactId>hoxton.microservice-consumer-user-nacos</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
-        <server.port>8000</server.port>
+        <server.port>8010</server.port>
         <docker.service.discovery.name>nacos</docker.service.discovery.name>
     </properties>
 
@@ -24,37 +24,28 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>hoxton.provider-user-nacos</finalName>
+        <finalName>hoxton.consumer-user-nacos</finalName>
 
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.mawen.UserApplication</mainClass>
+                    <mainClass>com.mawen.ConsumerApplication</mainClass>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <configuration>
-                    <exposes>
-                        <expose>${server.port}</expose>
-                    </exposes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>
