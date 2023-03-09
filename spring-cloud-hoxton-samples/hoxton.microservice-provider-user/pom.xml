@@ -13,7 +13,10 @@
     <artifactId>hoxton.microservice-provider-user</artifactId>
 
     <properties>
+        <!-- 设置保留的应用端口 -->
         <server.port>8000</server.port>
+        <!-- 替代 Spring Boot Maven Plugin 下的mainClass -->
+        <start-class>com.mawen.UserApplication</start-class>
         <docker.service.discovery.name>eureka</docker.service.discovery.name>
     </properties>
 
@@ -21,6 +24,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -41,19 +49,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.UserApplication</mainClass>
-                </configuration>
             </plugin>
 
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <configuration>
-                    <exposes>
-                        <expose>${server.port}</expose>
-                    </exposes>
-                </configuration>
             </plugin>
         </plugins>
     </build>

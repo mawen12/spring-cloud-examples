@@ -23,6 +23,9 @@
 
         <module>hoxton.microservice-provider-user-nacos</module>
         <module>hoxton.microservice-consumer-user-nacos</module>
+
+        <module>hoxton.microservice-gateway</module>
+        <module>hoxton.microservice-gateway-zuul</module>
     </modules>
 
     <properties>
@@ -34,15 +37,13 @@
         <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.9.RELEASE</spring-cloud-alibaba.version>
 
+        <!-- 各个微服务模块实现 -->
         <server.port>0</server.port>
+        <start-class>0</start-class>
+        <docker.service.discovery.name>eureka</docker.service.discovery.name>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -92,14 +93,18 @@
     <build>
         <pluginManagement>
             <plugins>
-                <!-- Spring Boot Maven 插件版本管理 -->
+                <!-- 如果父工程不是springboot，就要用以下方式使用插件，才能生成正常的jar -->
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
+                    <configuration>
+                        <mainClass>${start-class}</mainClass>
+                    </configuration>
 
                     <executions>
                         <execution>
+                            <id>repackage</id>
                             <goals>
                                 <goal>repackage</goal>
                             </goals>
@@ -107,7 +112,7 @@
                     </executions>
                 </plugin>
 
-                <!-- Spotify Docker 插件版本管理 -->
+                <!-- Spotify Docker 插件，用于生成docker镜像 -->
                 <plugin>
                     <groupId>com.spotify</groupId>
                     <artifactId>docker-maven-plugin</artifactId>
@@ -134,7 +139,7 @@
                         <!-- "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005" remote debug 支持-->
                         <!-- "-Djava.security.egd=file:/dev/./urandom" 提升随机数性能-->
                         <!-- "-Dspring.profiles.active=default,docker" 使用default,docker -->
-                        <entryPoint>["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005", "-Djava.security.egd=file:/dev/./urandom", "-Dspring.profiles.active=docker", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                        <entryPoint>["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005", "-Djava.security.egd=file:/dev/./urandom", "-Dspring.profiles.active=default,docker", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                         <exposes>
                             <expose>${server.port}</expose>
                         </exposes>

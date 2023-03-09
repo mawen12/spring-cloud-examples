@@ -7,6 +7,14 @@ services:
       - "8761:8761"
     mem_limit: 1g
     mem_reservation: 1g
+  gateway:
+    image: mawen/hoxton.gateway:1.0-SNAPSHOT
+    ports:
+      - "18080:18080"
+    depends_on:
+      - eureka
+    mem_limit: 1g
+    mem_reservation: 1g
   provider:
     image: mawen/hoxton.provider-user:1.0-SNAPSHOT
     ports:

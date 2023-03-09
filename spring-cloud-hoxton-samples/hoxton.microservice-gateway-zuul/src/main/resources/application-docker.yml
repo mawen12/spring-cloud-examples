@@ -1,0 +1,6 @@
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://@docker.service.discovery.name@:8761/eureka

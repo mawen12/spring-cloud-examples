@@ -1,0 +1,20 @@
+server:
+  port: @server.port@
+spring:
+  application:
+    name: zuul
+zuul:
+  ignoredServices: '*'
+  routes:
+    provider:
+      serviceId: provider   # 前往服务注册中心，查找 provider 服务
+      path: /api/provider/**    # 将路径复写，例如：/api/user/1 -> /1
+    consumer:
+      serviceId: consumer
+      path: /api/consumer/**
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

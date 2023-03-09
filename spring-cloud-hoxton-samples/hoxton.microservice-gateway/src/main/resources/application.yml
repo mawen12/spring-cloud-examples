@@ -1,0 +1,32 @@
+server:
+  port: @server.port@
+spring:
+  application:
+    name: gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: provider_route
+          uri: lb://provider
+          predicates:
+            - Path=/api/provider/**
+          filters:
+#            - RewritePath=/api/user/(?<segment>/?.*), /$\{segment}  # 将请求路径重写，去除前缀/api/user，例如：/api/user/1 -> /1
+            - RewritePath=/api/provider, / # 同上，简化版本
+        - id: consumer_route
+          uri: lb://consumer
+          predicates:
+            - Path=/api/consumer/**
+          filters:
+            - RewritePath=/api/consumer, /
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

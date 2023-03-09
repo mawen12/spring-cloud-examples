@@ -9,26 +9,30 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hoxton.microservice-discovery-eureka</artifactId>
+    <artifactId>hoxton.microservice-gateway-zuul</artifactId>
     <name>${project.artifactId}</name>
-    <description>Microservice Discovery Eureka</description>
     <packaging>jar</packaging>
 
     <properties>
-        <server.port>8761</server.port>
-        <start-class>com.mawen.EurekaApplication</start-class>
+        <server.port>8040</server.port>
+        <start-class>com.mawen.ZuulApplication</start-class>
+        <docker.service.discovery.name>eureka</docker.service.discovery.name>
     </properties>
 
     <dependencies>
-        <!-- Eureka Server 依赖 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>hoxton.discovery-eureka</finalName>
+        <finalName>hoxton.gateway-zuul</finalName>
 
         <plugins>
             <plugin>
