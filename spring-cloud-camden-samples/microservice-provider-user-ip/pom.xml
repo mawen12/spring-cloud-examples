@@ -13,6 +13,10 @@
     <artifactId>microservice-provider-user-ip</artifactId>
     <description>用户微服务-IP选择</description>
 
+    <properties>
+        <start-class>com.mawen.user.ProviderUserIpApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -36,18 +40,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.user.ProviderUserIpApplication</mainClass>
-                </configuration>
-
-                <!-- 添加 repackage，确保达成的jar中能够包含main manifest attribute -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

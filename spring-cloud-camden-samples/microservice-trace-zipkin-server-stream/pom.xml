@@ -13,6 +13,10 @@
     <artifactId>microservice-trace-zipkin-server-stream</artifactId>
     <description>ZipKin Trace 消息中间件</description>
 
+    <properties>
+        <start-class>com.mawen.ZipkinServerStreamApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -41,19 +45,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
-                <configuration>
-                    <mainClass>com.mawen.ZipkinServerStreamApplication</mainClass>
-                </configuration>
-
-                <!-- 添加 repackage，确保达成的jar中能够包含main manifest attribute -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

@@ -13,6 +13,10 @@
     <artifactId>microservice-consumer-movie-understanding-metadata</artifactId>
     <description>电影微服务</description>
 
+    <properties>
+        <start-class>com.mawen.movie.MovieMetadataApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -26,17 +30,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.movie.MovieMetadataApplication</mainClass>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

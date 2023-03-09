@@ -13,6 +13,10 @@
     <artifactId>microservice-provider-user-my-metadata</artifactId>
     <description>用户微服务</description>
 
+    <properties>
+        <start-class>com.mawen.user.ProviderUserMetadataApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -36,17 +40,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.user.ProviderUserMetadataApplication</mainClass>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

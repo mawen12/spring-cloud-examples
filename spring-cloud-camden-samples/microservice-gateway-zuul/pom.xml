@@ -13,6 +13,10 @@
     <artifactId>microservice-gateway-zuul</artifactId>
     <description>Zuul 微服务网关</description>
 
+    <properties>
+        <start-class>com.mawen.gateway.zuul.ZuulApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -31,18 +35,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.gateway.zuul.ZuulApplication</mainClass>
-                </configuration>
-
-                <!-- 添加 repackage，确保达成的jar中能够包含main manifest attribute -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <!-- Spotify Docker 插件 -->

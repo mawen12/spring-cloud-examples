@@ -13,6 +13,10 @@
     <artifactId>microservice-file-upload</artifactId>
     <description>文件上传微服务</description>
 
+    <properties>
+        <start-class>com.mawen.FileUploadApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -26,18 +30,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.FileUploadApplication</mainClass>
-                </configuration>
-
-                <!-- 添加 repackage，确保达成的jar中能够包含main manifest attribute -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

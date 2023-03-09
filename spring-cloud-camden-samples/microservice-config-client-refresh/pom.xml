@@ -13,6 +13,10 @@
     <artifactId>microservice-config-client-refresh</artifactId>
     <description>Config Client 微服务 手动刷新配置</description>
 
+    <properties>
+        <start-class>com.mawen.config.client.ConfigClientRefreshApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -25,17 +29,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.config.client.ConfigClientRefreshApplication</mainClass>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

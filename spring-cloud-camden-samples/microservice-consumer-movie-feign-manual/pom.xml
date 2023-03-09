@@ -13,6 +13,10 @@
     <artifactId>microservice-consumer-movie-feign-manual</artifactId>
     <description>电影微服务 手动配置 Feign</description>
 
+    <properties>
+        <start-class>com.mawen.movie.MovieFeignManualApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -32,17 +36,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.movie.MovieFeignManualApplication</mainClass>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

@@ -13,6 +13,10 @@
     <artifactId>microservice-hystrix-turbine</artifactId>
     <description>微服务 Hystrix Turbine</description>
 
+    <properties>
+        <start-class>com.mawen.HystrixTurbineApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -26,18 +30,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.HystrixTurbineApplication</mainClass>
-                </configuration>
-
-                <!-- 添加 repackage，确保达成的jar中能够包含main manifest attribute -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <!-- Spotify Docker 插件 -->

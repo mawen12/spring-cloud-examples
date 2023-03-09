@@ -13,6 +13,10 @@
     <artifactId>microservice-discovery-eureka-dockerfile-docker-maven-plugin</artifactId>
     <description>微服务发现组件-Eureka</description>
 
+    <properties>
+        <start-class>com.mawen.discovery.eureka.EurekaApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -26,17 +30,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.discovery.eureka.EurekaApplication</mainClass>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <!-- Spotify Docker 插件 -->

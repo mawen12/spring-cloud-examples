@@ -91,6 +91,10 @@
 
         <spring-boot.version>1.4.3.RELEASE</spring-boot.version>
         <spring-cloud.version>Camden.SR4</spring-cloud.version>
+
+        <server.port>0</server.port>
+        <start-class>0</start-class>
+        <docker.service.discovery.name>eureka</docker.service.discovery.name>
     </properties>
 
     <dependencies>
@@ -162,6 +166,18 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
+                    <configuration>
+                        <mainClass>${start-class}</mainClass>
+                    </configuration>
+
+                    <executions>
+                        <execution>
+                            <id>repackage</id>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
 
                 <!-- Spotify Docker 插件 -->

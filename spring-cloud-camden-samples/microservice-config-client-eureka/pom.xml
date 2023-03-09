@@ -13,6 +13,10 @@
     <artifactId>microservice-config-client-eureka</artifactId>
     <description>Config Client 微服务 服务注册</description>
 
+    <properties>
+        <start-class>com.mawen.config.client.ConfigClientEurekaApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -30,17 +34,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.config.client.ConfigClientEurekaApplication</mainClass>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

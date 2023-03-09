@@ -13,6 +13,10 @@
     <artifactId>microservice-discovery-eureka-healthcheck</artifactId>
     <description>微服务发现组件-Eureka-健康检查</description>
 
+    <properties>
+        <start-class>com.mawen.discovery.eureka.EurekaHealthcheckApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -26,18 +30,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.discovery.eureka.EurekaHealthcheckApplication</mainClass>
-                </configuration>
-
-                <!-- 添加 repackage，确保达成的jar中能够包含main manifest attribute -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

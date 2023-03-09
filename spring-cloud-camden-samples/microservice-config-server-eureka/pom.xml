@@ -13,6 +13,10 @@
     <artifactId>microservice-config-server-eureka</artifactId>
     <description>Config Server 配置服务 服务注册</description>
 
+    <properties>
+        <start-class>com.mawen.config.server.ConfigServerEurekaApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -30,17 +34,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.config.server.ConfigServerEurekaApplication</mainClass>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

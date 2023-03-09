@@ -13,6 +13,10 @@
     <artifactId>microservice-consumer-movie-feign-logging</artifactId>
     <description>电影微服务 Feign 日志</description>
 
+    <properties>
+        <start-class>com.mawen.movie.MovieFeignLoggingApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -32,17 +36,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.movie.MovieFeignLoggingApplication</mainClass>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

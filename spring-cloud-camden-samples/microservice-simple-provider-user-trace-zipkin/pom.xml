@@ -13,6 +13,10 @@
     <artifactId>microservice-simple-provider-user-trace-zipkin</artifactId>
     <description>用户微服务-简单-服务跟踪-Zipkin</description>
 
+    <properties>
+        <start-class>com.mawen.user.SimpleProviderUserTraceZipkinApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -41,18 +45,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.mawen.user.SimpleProviderUserTraceZipkinApplication</mainClass>
-                </configuration>
-
-                <!-- 添加 repackage，确保达成的jar中能够包含main manifest attribute -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
