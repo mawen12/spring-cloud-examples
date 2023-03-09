@@ -18,13 +18,7 @@
     </properties>
 
     <build>
-        <plugins>
-            <!-- Spring Boot Maven 插件 -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
+        <finalName>simple-consumer-movie</finalName>
     </build>
 
 </project>

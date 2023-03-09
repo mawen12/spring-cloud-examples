@@ -25,12 +25,6 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <!-- Spring Boot Maven 插件 -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
+        <finalName>consumer-movie</finalName>
     </build>
 </project>

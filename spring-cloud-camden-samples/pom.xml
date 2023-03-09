@@ -149,6 +149,16 @@
                     <fork>true</fork>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+            </plugin>
         </plugins>
 
         <resources>
@@ -161,7 +171,6 @@
 
         <pluginManagement>
             <plugins>
-                <!-- Spring Boot Maven 插件版本管理 -->
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
@@ -185,6 +194,40 @@
                     <groupId>com.spotify</groupId>
                     <artifactId>docker-maven-plugin</artifactId>
                     <version>0.4.13</version>
+                    <executions>
+                        <execution>
+                            <id>build-image</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <imageName>mawen/${project.build.finalName}:${project.version}</imageName>
+                        <forceTags>true</forceTags>
+                        <baseImage>openjdk:8u212-jre-alpine</baseImage>
+                        <entryPoint>
+                            [
+                                "java", \
+                                    "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005", \
+                                    "-Djava.security.egd=file:/dev/./urandom", \
+                                    "-Dspring.profiles.active=default,docker", \
+                                    "-jar", \
+                                    "/${project.build.finalName}.jar"
+                            ]
+                        </entryPoint>
+                        <exposes>
+                            <expose>${server.port}</expose>
+                        </exposes>
+                        <resources>
+                            <resource>
+                                <targetPath>/</targetPath>
+                                <directory>${project.build.directory}</directory>
+                                <include>${project.build.finalName}.jar</include>
+                            </resource>
+                        </resources>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

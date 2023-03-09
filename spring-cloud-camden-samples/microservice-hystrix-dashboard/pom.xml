@@ -25,36 +25,6 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <!-- Spring Boot Maven 插件 -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
-            <!-- Spotify Docker 插件 -->
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <configuration>
-                    <!-- 镜像名称 仓库名称/镜像名称/标签名称-->
-                    <imageName>mawen/${project.artifactId}:${project.version}</imageName>
-                    <forceTags>true</forceTags>
-                    <!-- 基础镜像 类似 Dockerfile 中的 FROM 命令 -->
-                    <baseImage>openjdk:8u342-jdk</baseImage>
-                    <!-- 类似与 Dockerfile 中的 ENTRYPOINT 命令 -->
-                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <!-- 指定需要复制的根目录 -->
-                            <directory>${project.build.directory}</directory>
-                            <!-- 指定需要复制的文件 -->
-                            <include>${project.build.finalName}.jar</include>
-                        </resource>
-                    </resources>
-                </configuration>
-            </plugin>
-        </plugins>
+        <finalName>cloud-camden-samples</finalName>
     </build>
 </project>

@@ -13,11 +13,24 @@
     <name>${project.artifactId}</name>
     <description>Spring Cloud Eureka</description>
 
+    <properties>
+        <start-class>com.mawen.EurekaApplication</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
     </dependencies>
+
+    <build>
+        <finalName>kilburn.discovery-eureka</finalName>
+    </build>
 
 </project>

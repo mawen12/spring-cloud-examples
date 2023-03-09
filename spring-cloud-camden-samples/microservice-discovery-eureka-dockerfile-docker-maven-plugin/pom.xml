@@ -25,34 +25,7 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <!-- Spring Boot Maven 插件 -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
-            <!-- Spotify Docker 插件 -->
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <configuration>
-                    <!-- 镜像名称 仓库名称/镜像名称/标签名称-->
-                    <imageName>mawen/${project.artifactId}:${project.version}</imageName>
-                    <!-- 指定 Dockerfile 所在的路径 -->
-                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <!-- 指定需要复制的根目录 -->
-                            <directory>${project.build.directory}</directory>
-                            <!-- 指定需要复制的文件 -->
-                            <include>${project.build.finalName}.jar</include>
-                        </resource>
-                    </resources>
-                </configuration>
-            </plugin>
-        </plugins>
+        <finalName>discovery-eureka-dockerfile-docker-maven-plugin</finalName>
     </build>
 
 </project>
