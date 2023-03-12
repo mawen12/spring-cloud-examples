@@ -93,13 +93,20 @@
     </build>
 
     <repositories>
-        <!-- Spring 仓库 -->
+        <!-- Spring milestone 仓库，获取对应版本的 milestone 和 RC 版本 -->
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
             <url>https://repo.spring.io/milestone</url>
+        </repository>
+
+        <!-- Spring Snapshot 仓库，获取对应版本的 snapshot 版本 -->
+        <repository>
+            <id>spring-snapshot</id>
+            <name>Spring Snapshot</name>
+            <url>https://repo.spring.io/snapshot</url>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </snapshots>
         </repository>
     </repositories>
