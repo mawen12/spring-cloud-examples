@@ -27,6 +27,14 @@
         <module>hoxton.microservice-gateway</module>
         <module>hoxton.microservice-gateway-zuul</module>
         <module>hoxton.microservice-consumer-user-ribbon</module>
+        <module>hoxton.spring-cloud-alibaba-nacos-provider</module>
+        <module>hoxton.spring-cloud-alibaba-nacos-consumer</module>
+        <module>hoxton.spring-cloud-alibaba-nacos-consumer-reactive</module>
+        <module>hoxton.spring-cloud-netfilx-eureka-server</module>
+        <module>hoxton.spring-cloud-netflix-eureka-provider</module>
+        <module>hoxton.spring-cloud-netflix-eureka-consumer</module>
+        <module>hoxton.spring-cloud-eureka-nacos-provider</module>
+        <module>hoxton.spring-cloud-eureka-nacos-consumer</module>
 
     </modules>
 

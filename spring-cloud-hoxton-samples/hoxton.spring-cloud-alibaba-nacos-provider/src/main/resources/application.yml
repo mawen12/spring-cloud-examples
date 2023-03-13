@@ -1,0 +1,15 @@
+server:
+  port: @server.port@               # 应用要启动的端口号，也是要注册的端口号
+spring:
+  application:
+    name: my-provider               # 要注册的服务名
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # Nacos Server 地址信息
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
