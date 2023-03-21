@@ -14,7 +14,7 @@
     <description>Config Client 微服务</description>
 
     <properties>
-        <start-class>com.mawen.config.client.ConfigClientApplication</start-class>
+        <start-class>com.mawen.config.client.com.mawen.ConfigClientApplication</start-class>
     </properties>
 
     <dependencies>

@@ -5,16 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.mawen</groupId>
-        <artifactId>hoxton.service-discovery</artifactId>
+        <artifactId>hoxton.config-management</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hoxton.spring-cloud-alibaba-gray-provider</artifactId>
-    <description>应用灰度发布</description>
+    <artifactId>hoxton.spring-cloud-config-client-service-registry</artifactId>
+    <description>Spring Cloud Config Client 和 Alibaba Nacos 注册中心整合的例子</description>
 
     <properties>
-        <server.port>9090</server.port>
-        <start-class>com.mawen.NacosGrayProvider</start-class>
+        <start-class>com.mawen.ConfigClientServiceRegistryApplication</start-class>
     </properties>
 
     <dependencies>
@@ -24,8 +23,19 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+            <version>3.0.2</version>
         </dependency>
     </dependencies>
 

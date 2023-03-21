@@ -18,6 +18,7 @@
         <module>hoxton.loadbalancer-openfeign</module>
         <module>hoxton.service-route</module>
         <module>hoxton.circuit-breaker</module>
+        <module>hoxton.config-management</module>
     </modules>
 
     <properties>
@@ -27,7 +28,7 @@
 
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.9.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.2.10-RC1</spring-cloud-alibaba.version>
 
         <!-- 各个微服务模块实现 -->
         <server.port>0</server.port>
@@ -45,12 +46,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
         </dependency>
 
         <dependency>

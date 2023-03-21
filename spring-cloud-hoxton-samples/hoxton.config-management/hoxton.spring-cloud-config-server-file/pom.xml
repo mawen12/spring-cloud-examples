@@ -5,16 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.mawen</groupId>
-        <artifactId>hoxton.service-discovery</artifactId>
+        <artifactId>hoxton.config-management</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>hoxton.spring-cloud-alibaba-gray-provider</artifactId>
-    <description>应用灰度发布</description>
+    <artifactId>hoxton.spring-cloud-config-server-file</artifactId>
+    <description>使用 File System 文件系统作为 Spring Cloud Config Server 里的 EnvironmentRepository 实现类的例子</description>
 
     <properties>
-        <server.port>9090</server.port>
-        <start-class>com.mawen.NacosGrayProvider</start-class>
+        <start-class>com.mawen.ConfigServerFileApplication</start-class>
     </properties>
 
     <dependencies>
@@ -24,14 +23,12 @@
         </dependency>
 
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}</finalName>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

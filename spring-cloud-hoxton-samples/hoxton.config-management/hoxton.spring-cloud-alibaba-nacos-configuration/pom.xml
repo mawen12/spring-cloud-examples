@@ -5,27 +5,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.mawen</groupId>
-        <artifactId>hoxton.service-discovery</artifactId>
+        <artifactId>hoxton.config-management</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <packaging>jar</packaging>
 
-    <artifactId>hoxton.spring-cloud-alibaba-gray-provider</artifactId>
-    <description>应用灰度发布</description>
-
-    <properties>
-        <server.port>9090</server.port>
-        <start-class>com.mawen.NacosGrayProvider</start-class>
-    </properties>
+    <artifactId>hoxton.spring-cloud-alibaba-nacos-configuration</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 
@@ -39,5 +34,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
