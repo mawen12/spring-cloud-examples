@@ -13,4 +13,10 @@
     <artifactId>hoxton.circuit-breaker</artifactId>
     <description>熔断器</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+    </dependencies>
 </project>
